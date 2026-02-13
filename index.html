@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Para el amor de mi vida ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="zona-mensajes">
+        <div class="mensaje">
+            <h2>Para el amor de mi vida:</h2>
+            <p>Si pudiera... 
+                te daria cada pedacito de mi corazón para arreglar 
+                hasta el más mínimo dolor que esté en el tuyo.
+            Que juntos cumplamos más sueños que años por que contigo quiero
+        una historia sin final.</p>
+            <p class="contador">
+                Mi amor por ti comenzó hace...
+                <span id="tiempo"></span>
+            </p>
+        </div>
+
+<div class="arbol">
+    <div class="tronco"></div>
+
+    <div class="rama r1">
+        <span class="hoja-corazon hoja-grande" style="top: -45px; left: 75%; transform: rotate(-15deg);"></span>
+    <span class="hoja-corazon hoja-mediana" style="top: -30px; left: 40%; transform: rotate(10deg);"></span>
+    <span class="hoja-corazon hoja-chica" style="top: -55px; left: 60%; transform: scale(0.9);"></span>
+    <span class="hoja-corazon hoja-grande" style="top: -25px; left: 85%; transform: rotate(-25deg);"></span>
+    <span class="hoja-corazon hoja-mediana" style="top: -35px; left: 25%; transform: rotate(20deg);"></span>
+
+    <!-- Puedes agregar más con inline style o clases -->
+    <!-- Para llegar a 20, repite este patrón con posiciones diferentes -->
+    </div>
+    <div class="rama r2"></div>
+    <div class="rama r3"></div>
+    <div class="rama r4"></div>
+    <div class="rama r5"></div>
+    <div class="rama r6"></div>
+    <div class="rama r7"></div>
+    <div class="rama r8"></div>
+    <div class="rama r9"></div>
+    <div class="rama r10"></div>
+    <div class="rama r11"></div>
+</div>
+    <div class="corazones"></div>
+
+<div class="heart-container">
+    <div class="heart" id="heart">
+        <!-- SVG de corazón grande, sólido y con degradado rosa-rojo suave -->
+        <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <radialGradient id="gradHeart" cx="50%" cy="40%" r="70%">
+                    <stop offset="0%" stop-color="#ff80ab" />   <!-- rosa claro arriba -->
+                    <stop offset="100%" stop-color="#ff3366" /> <!-- rojo intenso abajo -->
+                </radialGradient>
+            </defs>
+            <path fill="url(#gradHeart)" d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z"/>
+        </svg>
+    </div>
+    <div class="notification" id="notification">100</div>
+</div>
+
+        <div class="message-area" id="messageArea"></div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+

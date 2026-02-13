@@ -1,0 +1,417 @@
+/* Reset básico y fondo general */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #fdeaf4;
+    font-family: 'Segoe UI', sans-serif;
+    color: #7a1c3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.mensaje h2 {
+    font-family: "Lucida Calligraphy", cursive;
+    margin-bottom: 20px;
+}
+/* Contenedor principal del árbol y elementos */
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
+    padding: 20px;
+
+}
+
+/* Mensajes y título (zona superior) */
+.zona-mensajes {
+    margin-bottom: 40px;
+}
+
+.zona-mensajes h1 {
+    font-family: "Lucida Calligraphy", cursive;
+    font-size: 2.8rem;
+    color: #c2185b;
+    margin-bottom: 20px;
+}
+.zona-mensajes p {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+/* Contador de tiempo */
+.contador {
+    margin-top: 20px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #c52a60;
+}
+
+#tiempo {
+    font-size: 2.2rem;          /* ¡solo los números más grandes! */
+    font-weight: 900;           /* más grueso para resaltar */
+    color: #c2185b;             /* un tono más intenso si quieres */
+    background: linear-gradient(90deg, #ff6b81, #ff3366); /* degradado opcional */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    padding: 0 6px;
+    border-radius: 8px;
+    animation: latidoNumero 2.5s infinite ease-in-out;
+}
+
+@keyframes latidoNumero {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.06); }
+}
+
+/* Área donde aparecen las burbujas de mensajes */
+.message-area {
+    position: fixed;
+    bottom: 240px;          /* Ajusta según altura del corazón */
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 20;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+}
+
+/* Burbujas de mensajes */
+.bubble {
+    background: white;
+    color: #e91e63;
+    padding: 12px 22px;
+    border-radius: 30px;
+    margin: 15px auto;
+    max-width: 90%;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    font-weight: 600;
+    font-size: 1.15rem;
+    opacity: 0;
+    animation: floatUp 5s ease-out forwards;
+    white-space: pre-line;
+}
+
+@keyframes floatUp {
+    0%   { transform: translateY(50px); opacity: 0; }
+    15%  { opacity: 1; }
+    85%  { opacity: 1; }
+    100% { transform: translateY(-300px); opacity: 0; }
+}
+
+/* Contenedor del corazón - posición cerca del árbol, a la derecha */
+.heart-container {
+    position: absolute;
+    bottom: 140px;
+    right: 18%;
+    width: 110px;                 /* tamaño del corazón */
+    height: 110px;
+    z-index: 60;
+    cursor: pointer;
+}
+
+.heart {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    animation: latido 2s infinite ease-in-out, brillo 3.5s infinite alternate;
+    filter: drop-shadow(0 8px 20px rgba(255, 51, 102, 0.6));
+}
+
+.heart svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Círculo de notificación */
+.notification {
+    position: absolute;
+    top: -18px;
+    right: -22px;
+    width: 44px;
+    height: 44px;
+    background: white;
+    border-radius: 50%;
+    border: 4px solid #ff3366;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    pointer-events: none;
+}
+
+@keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.08); }
+}
+
+@keyframes brillo {
+    0%   { filter: drop-shadow(0 8px 20px rgba(255, 51, 102, 0.6)); }
+    100% { filter: drop-shadow(0 14px 32px rgba(255, 51, 102, 0.9)); }
+}
+
+/* Árbol */
+.arbol {
+    position: relative;
+    width: 400px;
+    height: 520px;
+    margin: 0 auto 140px;
+}
+
+/* Tronco */
+.tronco {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 45px;
+    height: 340px;
+    background: #3d1f0f;           /* marrón más natural */
+    transform: translateX(-50%);
+    border-radius: 22px 22px 0 0;
+    box-shadow: insert 0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Ramas*/
+.rama {
+    position: absolute;
+    background: #3d1f0f;
+    border-radius: 12px;
+    transform-origin: left center;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+}
+
+/* Ramas principales (gruesas) */
+.r1 { bottom: 170px; 
+    left: 50%; 
+    width: 160px; 
+    height: 16px; 
+    transform: rotate(-30deg); }
+
+.r2 { bottom: 200px; 
+    right: 50%; 
+    width: 160px; 
+    height: 16px; 
+    transform: rotate(30deg); 
+    transform-origin: center right; }
+
+.r3 { bottom: 300px; 
+    left: 50%; 
+    width: 130px; 
+    height: 12px; 
+    transform: rotate(-30deg); }
+
+.r4 { bottom: 280px; 
+    right: 50%; 
+    width: 130px; 
+    height: 12px; 
+    transform: rotate(30deg); 
+    transform-origin: center right; }
+
+/* Ramas secundarias (más hojas arriba) */
+.r5  { bottom: 220px; 
+    left: 68%; 
+    width: 100px; 
+    height: 8px; 
+    transform: rotate(-55deg); }
+.r6  { bottom: 260px; 
+    right: 75%; 
+    width: 100px; 
+    height: 8px; 
+    transform: rotate(55deg); 
+    transform-origin: center right; }
+.r7  { bottom: 334px; 
+    left: 65%; 
+    width: 110px; 
+    height: 7px; 
+    transform: rotate(-55deg); }
+.r8  { bottom: 320px; 
+        right: 65%; 
+        width: 110px; 
+        height: 7px; 
+        transform: rotate(55deg); 
+        transform-origin: center right; }
+
+.r9  { bottom: 280px; 
+    left: 78%; 
+    width: 100px; 
+    height: 3px; 
+    transform: rotate(-25deg); }
+
+.r10  { bottom: 290px; 
+    right: 80%; 
+    width: 100px; 
+    height: 3px; 
+    transform: rotate(35deg); 
+    transform-origin: center right; }
+
+.r11  { bottom: 380px; 
+    left: 25%; 
+    width: 80px; 
+    height: 3px; 
+    transform: rotate(-55deg); }
+/* Contenedor de corazones flotantes */
+.corazones {
+    position: absolute;
+    inset: 0;                    /* top/right/bottom/left: 0 */
+    pointer-events: none;
+    overflow: hidden;
+}
+
+/* Corazones de fondo y que nacen de ramas */
+.corazones span,
+.corazon-nace {
+    position: absolute;
+    color: #ff4d6d;
+    font-size: 1.6rem;
+    animation: flotar 10s linear infinite;
+    pointer-events: none;
+}
+
+.corazon-nace {
+    position: absolute;
+    animation: brotarSubirLatir 7s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes brotarSubirLatir {
+    0% {
+        transform: translate(0, 0) scale(0.6) rotate(0deg);
+        opacity: 0;
+    }
+    15% {
+        transform: translate(var(--movX), -50px) scale(1.3);
+        opacity: 1;
+    }
+    40%, 60%, 80% {
+        transform: translate(var(--movX), -120px) scale(1.15);
+    }
+    100% {
+        transform: translate(calc(var(--movX) * 1.2), -350px) scale(0.8) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Animación de flotar (fondo) */
+@keyframes flotar {
+    0%   { transform: translateY(20vh) scale(0.8); opacity: 0.7; }
+    100% { transform: translateY(-120vh) scale(1.2); opacity: 0; }
+}
+
+/* Animación de nacer desde rama */
+@keyframes nacer {
+    0%   { transform: translate(0, 0) scale(0.4); opacity: 0; }
+    25%  { transform: translate(var(--movX), -40px) scale(1.3); opacity: 1; }
+    100% { transform: translate(var(--movX), -220px) scale(0.9); opacity: 0; }
+}
+
+/* Partículas al clickear corazón */
+.particle {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    background: #ff80ab;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: explode 1.3s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes explode {
+    0%   { transform: translate(-50%, -50%) scale(0.2); opacity: 1; }
+    50%  { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.4); }
+    100% { transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(0); opacity: 0; }
+}
+
+/* Corazones estáticos como follaje fijo (para que el árbol se vea lleno siempre) */
+.arbol::before,
+.arbol::after,
+.rama::before,
+.rama::after {
+    content: "❤️";
+    position: absolute;
+    color: #ff6b81;          /* rosa medio */
+    font-size: 1.8rem;
+    pointer-events: none;
+}
+
+/* Corazones fijos en el tronco y ramas principales */
+.arbol::before {
+    top: -20px; left: 50%;
+    transform: translateX(-50%) scale(1.4);
+    color: #ff4757;          /* rojo-rosa más intenso */
+}
+
+.arbol::after {
+    top: -40px; left: 50%;
+    transform: translateX(-50%) scale(1.2) rotate(15deg);
+    color: #ff85a2;
+}
+
+/* En cada rama principal (agrega más si quieres densidad) */
+.r1::before, .r2::before, .r3::before, .r4::before {
+    content: "❤️";
+    font-size: 2.2rem;
+    top: -25px; left: 80%;
+    transform: translateX(-50%);
+    color: #ff79ac;
+}
+
+.r1::after, .r2::after, .r3::after, .r4::after {
+    content: "💗";
+    font-size: 1.9rem;
+    top: -15px; left: 20%;
+    transform: translateX(-50%) rotate(-10deg);
+    color: #ffb6c1;
+}
+
+/* Corazones pequeños dispersos en ramas secundarias */
+.r5::before, .r6::before, .r7::before, .r8::before, .r9::before, .r10::before {
+    content: "💕";
+    font-size: 1.5rem;
+    top: -18px; left: 70%;
+    opacity: 0.9;
+}
+
+/* Corazones fijos como hojas (sin movimiento, solo latido sutil opcional) */
+.hoja-corazon {
+    position: absolute;
+    font-size: 1.8rem;           /* tamaño base */
+    color: #ff6b81;              /* rosa principal */
+    pointer-events: none;
+    z-index: 2;                  /* encima de la rama */
+    opacity: 0.92;
+}
+
+/* Latido muy sutil (opcional, quítalo si no quieres ningún movimiento) */
+.hoja-corazon {
+    animation: latidoHoja 6s infinite ease-in-out;
+}
+
+@keyframes latidoHoja {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.08); }
+}
+
+/* Variaciones de tamaño y color para que se vea natural */
+.hoja-chica  { font-size: 1.3rem; opacity: 0.85; color: #ffb6c1; }
+.hoja-mediana { font-size: 1.9rem; opacity: 0.9;  color: #ff79ac; }
+.hoja-grande  { font-size: 2.5rem; opacity: 0.95; color: #ff4757; }
+
+
